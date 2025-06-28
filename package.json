@@ -1,0 +1,25 @@
+{
+  "name": "digital-signature",
+  "version": "1.0.0",
+  "description": "Digital Signature Generator And Verifier Library",
+  "homepage": "https://github.com/NeaByteLab/Digital-Signature#readme",
+  "bugs": {
+    "url": "https://github.com/NeaByteLab/Digital-Signature/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeaByteLab/Digital-Signature.git"
+  },
+  "license": "ISC",
+  "author": "NeaByteLab",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.7.1"
+  }
+}
