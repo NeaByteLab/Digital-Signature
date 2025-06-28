@@ -1,10 +1,10 @@
-const crypto = require('crypto')
-const fs = require('fs')
+import crypto from 'crypto'
+import fs from 'fs'
 
 /**
  * Generate Keypair And Save Files
  */
-function generateKeypairAndSaveFiles() {
+export function generateKeypairAndSaveFiles() {
   const keypairResult = crypto.generateKeyPairSync('ec', { namedCurve: 'prime256v1' })
   const privateKeyContent = keypairResult.privateKey.export({ type: 'pkcs8', format: 'pem' })
   const publicKeyContent = keypairResult.publicKey.export({ type: 'spki', format: 'pem' })

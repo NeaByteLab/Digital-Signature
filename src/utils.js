@@ -1,13 +1,9 @@
-const fs = require('fs')
+import fs from 'fs'
 
 /**
  * Load Key Content
  * Params: keyPath
  */
-function loadKeyContent(keyPath) {
+export function loadKeyContent(keyPath) {
   return fs.readFileSync(keyPath, 'utf8')
-}
-
-module.exports = {
-  loadKeyContent
 }

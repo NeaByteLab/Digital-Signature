@@ -1,11 +1,11 @@
-const crypto = require('crypto')
-const fs = require('fs')
+import crypto from 'crypto'
+import fs from 'fs'
 
 /**
  * Verify File Content
  * Params: filePath, signatureContent, publicKeyPem
  */
-function verifyFileContent(filePath, signatureContent, publicKeyPem) {
+export function verifyFileContent(filePath, signatureContent, publicKeyPem) {
   const fileContent = fs.readFileSync(filePath)
   const verifyInstance = crypto.createVerify('SHA256')
   verifyInstance.update(fileContent)
@@ -17,14 +17,9 @@ function verifyFileContent(filePath, signatureContent, publicKeyPem) {
  * Verify String Content
  * Params: dataContent, signatureContent, publicKeyPem
  */
-function verifyStringContent(dataContent, signatureContent, publicKeyPem) {
+export function verifyStringContent(dataContent, signatureContent, publicKeyPem) {
   const verifyInstance = crypto.createVerify('SHA256')
   verifyInstance.update(dataContent)
   verifyInstance.end()
   return verifyInstance.verify(publicKeyPem, signatureContent, 'base64')
-}
-
-module.exports = {
-  verifyFileContent,
-  verifyStringContent
 }

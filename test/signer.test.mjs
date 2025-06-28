@@ -1,7 +1,8 @@
-const crypto = require('crypto')
-const { expect } = require('chai')
-const { signStringData, verifyStringData, signFileData, verifyFileData } = require('../src/signer')
-const fs = require('fs')
+import { expect } from 'chai'
+import crypto from 'crypto'
+import fs from 'fs'
+import { signStringData, verifyStringData, signFileData, verifyFileData } from '../src/signer.js'
+
 
 /**
  * Test Digital Signature String

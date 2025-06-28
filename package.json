@@ -12,10 +12,10 @@
   },
   "license": "ISC",
   "author": "NeaByteLab",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.js"
+    "test": "mocha test/*.mjs"
   },
   "dependencies": {},
   "devDependencies": {

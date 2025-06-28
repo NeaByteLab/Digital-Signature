@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const fs = require('fs')
-const { signFile, verifyFile } = require('../src/signer')
-const { loadKey } = require('../src/utils')
+import fs from 'fs'
+import { signFileData, verifyFileData } from '../src/signer.js'
+import { loadKeyContent } from '../src/utils.js'
 
 /**
  * Print Usage Information
@@ -16,8 +16,8 @@ function printUsage() {
  * Params: filePath, privateKeyPath
  */
 function signCommand(filePath, privateKeyPath) {
-  const privateKeyContent = loadKey(privateKeyPath)
-  const fileSignature = signFile(filePath, privateKeyContent)
+  const privateKeyContent = loadKeyContent(privateKeyPath)
+  const fileSignature = signFileData(filePath, privateKeyContent)
   console.log(fileSignature)
 }
 
@@ -26,9 +26,9 @@ function signCommand(filePath, privateKeyPath) {
  * Params: filePath, publicKeyPath, signaturePath
  */
 function verifyCommand(filePath, publicKeyPath, signaturePath) {
-  const publicKeyContent = loadKey(publicKeyPath)
+  const publicKeyContent = loadKeyContent(publicKeyPath)
   const signatureContent = fs.readFileSync(signaturePath, 'utf8').trim()
-  const isSignatureValid = verifyFile(filePath, signatureContent, publicKeyContent)
+  const isSignatureValid = verifyFileData(filePath, signatureContent, publicKeyContent)
   console.log('Valid:', isSignatureValid)
 }
 

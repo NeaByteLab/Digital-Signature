@@ -1,11 +1,11 @@
-const crypto = require('crypto')
-const fs = require('fs')
+import crypto from 'crypto'
+import fs from 'fs'
 
 /**
  * Sign File Data
  * Params: filePath, privateKeyPem
  */
-function signFileData(filePath, privateKeyPem) {
+export function signFileData(filePath, privateKeyPem) {
   const fileContent = fs.readFileSync(filePath)
   const signInstance = crypto.createSign('SHA256')
   signInstance.update(fileContent)
@@ -17,7 +17,7 @@ function signFileData(filePath, privateKeyPem) {
  * Sign String Data
  * Params: dataContent, privateKeyPem
  */
-function signStringData(dataContent, privateKeyPem) {
+export function signStringData(dataContent, privateKeyPem) {
   const signInstance = crypto.createSign('SHA256')
   signInstance.update(dataContent)
   signInstance.end()
@@ -28,7 +28,7 @@ function signStringData(dataContent, privateKeyPem) {
  * Verify File Data
  * Params: filePath, signatureContent, publicKeyPem
  */
-function verifyFileData(filePath, signatureContent, publicKeyPem) {
+export function verifyFileData(filePath, signatureContent, publicKeyPem) {
   const fileContent = fs.readFileSync(filePath)
   const verifyInstance = crypto.createVerify('SHA256')
   verifyInstance.update(fileContent)
@@ -40,16 +40,9 @@ function verifyFileData(filePath, signatureContent, publicKeyPem) {
  * Verify String Data
  * Params: dataContent, signatureContent, publicKeyPem
  */
-function verifyStringData(dataContent, signatureContent, publicKeyPem) {
+export function verifyStringData(dataContent, signatureContent, publicKeyPem) {
   const verifyInstance = crypto.createVerify('SHA256')
   verifyInstance.update(dataContent)
   verifyInstance.end()
   return verifyInstance.verify(publicKeyPem, signatureContent, 'base64')
-}
-
-module.exports = {
-  signFileData,
-  signStringData,
-  verifyFileData,
-  verifyStringData
 }
